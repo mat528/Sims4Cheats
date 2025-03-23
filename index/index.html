@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta name="google-site-verification" content="d7QZNeNEAvpmt_6eQDXE4MXZbzwP1zE0l6dwuR2o_z8" />    <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sims 4 Cheats</title>
     <style>
-        /* CSS für Dark/Light-Mode und allgemeine Stile */
+        /* Allgemeine Stile */
         * {
             border: 0;
             box-sizing: border-box;
@@ -21,161 +21,23 @@
             --trans-timing: cubic-bezier(0.76, 0.05, 0.24, 0.95);
             --trans-timing-in: cubic-bezier(0.76, 0.05, 0.86, 0.06);
             --trans-timing-out: cubic-bezier(0.05, 0.76, 0.06, 0.86);
-            font-size: 16px; /* Feste Schriftgröße */
-        }
-        body,
-        input {
-            color: var(--fg);
-            font: 1em/1.5 sans-serif;
+            font-size: 16px;
         }
         body {
             background-color: var(--bg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            transition:
-                background-color var(--trans-dur),
-                color var(--trans-dur);
+            color: var(--fg);
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            padding: 20px;
         }
-        body:has(.switch__input:checked) {
-            background-color: var(--fg);
-            color: var(--bg);
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
         }
-
-        /* Dark/Light-Mode-Switch */
-        .switch {
-            position: fixed; /* Fixierte Position */
-            top: 20px; /* Abstand vom oberen Rand */
-            right: 20px; /* Abstand vom rechten Rand */
-            z-index: 1000; /* Sicherstellen, dass der Switch über allem liegt */
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
         }
-        .switch__icon,
-        .switch__input {
-            display: block;
-        }
-        .switch__icon {
-            position: absolute;
-            top: 0.375em;
-            right: 0.375em;
-            width: 1.5em; /* Größere Icons */
-            height: 1.5em; /* Größere Icons */
-            transition:
-                opacity calc(var(--trans-dur) / 2),
-                transform calc(var(--trans-dur) / 2);
-        }
-        .switch__icon polyline {
-            transition: stroke-dashoffset calc(var(--trans-dur) / 2);
-        }
-        .switch__icon--light,
-        .switch__icon--light polyline {
-            transition-delay: calc(var(--trans-dur) / 2);
-            transition-timing-function: var(--trans-timing-out);
-        }
-        .switch__icon--dark {
-            opacity: 0;
-            transform: translateX(-0.75em) rotate(30deg) scale(0.75);
-            transition-timing-function: var(--trans-timing-in);
-        }
-        .switch__input {
-            background-color: hsl(210, 90%, 70%);
-            border-radius: 0.75em;
-            box-shadow:
-                0 0 0 0.125em hsla(var(--hue), 90%, 50%, 0),
-                0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
-            outline: transparent;
-            position: relative;
-            width: 4em; /* Größere Breite */
-            height: 2em; /* Größere Höhe */
-            -webkit-appearance: none;
-            appearance: none;
-            -webkit-tap-highlight-color: transparent;
-            transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                box-shadow 0.15s linear;
-        }
-        .switch__input:focus-visible {
-            box-shadow:
-                0 0 0 0.125em hsl(var(--hue), 90%, 50%),
-                0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
-        }
-        .switch__input:before,
-        .switch__input:after {
-            content: "";
-            display: block;
-            position: absolute;
-        }
-        .switch__input:before {
-            background-color: hsl(50, 90%, 50%);
-            border-radius: inherit;
-            mask-image: linear-gradient(120deg, hsl(0, 0%, 0%) 20%, hsla(0, 0%, 0%, 0) 80%);
-            -webkit-mask-image: linear-gradient(120deg, hsl(0, 0%, 0%) 20%, hsla(0, 0%, 0%, 0) 80%);
-            inset: 0;
-            transition: background-color var(--trans-dur) var(--trans-timing);
-        }
-        .switch__input:after {
-            background-color: hsl(0, 0%, 100%);
-            border-radius: 50%;
-            box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue), 90%, 10%, 0.1);
-            top: 0.25em; /* Angepasste Position */
-            left: 0.25em; /* Angepasste Position */
-            width: 1.5em; /* Größerer Kreis */
-            height: 1.5em; /* Größerer Kreis */
-            transition:
-                background-color var(--trans-dur) var(--trans-timing),
-                transform var(--trans-dur) var(--trans-timing);
-            z-index: 1;
-        }
-        .switch__input:checked {
-            background-color: hsl(290, 90%, 40%);
-        }
-        .switch__input:checked:before {
-            background-color: hsl(220, 90%, 40%);
-        }
-        .switch__input:checked:after {
-            background-color: hsl(0, 0%, 0%);
-            transform: translateX(2em); /* Angepasste Bewegung */
-        }
-        .switch__input:checked ~ .switch__icon--light,
-        .switch__input:checked ~ .switch__icon--light polyline {
-            transition-delay: 0s;
-            transition-timing-function: var(--trans-timing-in);
-        }
-        .switch__input:checked ~ .switch__icon--light {
-            opacity: 0;
-            transform: translateX(-0.75em) rotate(-30deg) scale(0.75);
-        }
-        .switch__input:checked ~ .switch__icon--light polyline {
-            stroke-dashoffset: 1.5;
-        }
-        .switch__input:checked ~ .switch__icon--dark {
-            opacity: 1;
-            transform: translateX(-1.5em);
-            transition-delay: calc(var(--trans-dur) / 2);
-            transition-timing-function: var(--trans-timing-out);
-        }
-        .switch__sr {
-            overflow: hidden;
-            position: absolute;
-            width: 1px;
-            height: 1px;
-        }
-
-        /* Überschriften anpassen */
-        h5 {
-            font-size: 1.2em; /* Kleinere Schriftgröße für h5 */
-            margin: 10px 0;
-        }
-        h3 {
-            font-size: 1.5em; /* Kleinere Schriftgröße für h3 */
-            margin: 15px 0;
-        }
-        h2 {
-            font-size: 1.8em; /* Kleinere Schriftgröße für h2 */
-            margin: 20px 0;
-        }
-
-        /* Stile für die Befehle und den Kopier-Button */
         .cheat-command {
             position: relative;
             display: inline-block;
@@ -201,252 +63,231 @@
         .copy-button:hover {
             background-color: hsl(var(--hue), 90%, 40%);
         }
+
+        /* Button zum Wechseln zwischen Desktop- und Mobile-Modus */
+        #mode-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        #mode-toggle:hover {
+            background-color: hsl(var(--hue), 90%, 40%);
+        }
+
+        /* Mobile-Modus Stile */
+        .mobile-mode body {
+            background-color: #333;
+            color: #fff;
+        }
+        .mobile-mode h1, .mobile-mode h2, .mobile-mode h3, .mobile-mode h4, .mobile-mode h5, .mobile-mode h6 {
+            color: #FFC107;
+        }
+        .mobile-mode .copy-button {
+            background-color: #FFC107;
+            color: #333;
+        }
     </style>
 </head>
 <body>
-    <!-- Dark/Light-Mode-Switch -->
-    <div class="switch">
-        <label class="switch">
-            <input class="switch__input" type="checkbox" role="switch">
-            <svg class="switch__icon switch__icon--light" viewBox="0 0 12 12" width="24px" height="24px" aria-hidden="true">
-                <g fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round">
-                    <circle cx="6" cy="6" r="2" />
-                    <g stroke-dasharray="1.5 1.5">
-                        <polyline points="6 10,6 11.5" transform="rotate(0,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(45,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(90,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(135,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(180,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(225,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(270,6,6)" />
-                        <polyline points="6 10,6 11.5" transform="rotate(315,6,6)" />
-                    </g>
-                </g>
-            </svg>
-            <svg class="switch__icon switch__icon--dark" viewBox="0 0 12 12" width="24px" height="24px" aria-hidden="true">
-                <g fill="none" stroke="#fff" stroke-width="1" stroke-linejoin="round" transform="rotate(-45,6,6)">
-                    <path d="m9,10c-2.209,0-4-1.791-4-4s1.791-4,4-4c.304,0,.598.041.883.105-.995-.992-2.367-1.605-3.883-1.605C2.962.5.5,2.962.5,6s2.462,5.5,5.5,5.5c1.516,0,2.888-.613,3.883-1.605-.285.064-.578.105-.883.105Z"/>
-                </g>
-            </svg>
-            <span class="switch__sr">Dark Mode</span>
-        </label>
-    </div>
+    <!-- Button zum Wechseln zwischen Desktop- und Mobile-Modus -->
+    <button id="mode-toggle">Zu Mobile-Modus wechseln</button>
 
-    <!-- Dein vorhandener HTML-Code -->
+    <!-- Dein Inhalt -->
+    <h1>Sims 4 Cheats</h1>
     <h5>Alle Cheats Für Sims 4 (Windows) im Überblick :</h5>
     <h3>Aktivierung des Cheats Menüs:</h3>
     <h5>Drücken Sie gleichzeitig <strong>Strg + Shift + C</strong></h5>
     <p>&nbsp;</p>
-    <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-direction-column-mu fb-order-6">
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-direction-column-mu fb-order-6">
-            <h2 class="hl-md mt-md" id="sims-4:-allgemeine-cheats">Sims 4: Allgemeine Cheats</h2>
-            <div class="Article__Text mt-sm">
-                <p>Mit den nachfolgenden Cheats können Sie Ihr Spielerlebnis in Sims 4 anpassen. Öffnen Sie wie oben beschrieben die Cheat-Konsole und fügen dann die folgenden Befehle ein:</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">help<span class="copy-button">Kopieren</span></span>: Liste mit Cheats wird in der Cheatkonsole angezeigt.</li>
-                    <li><span class="cheat-command">resetSim [Vorname] [Nachname]<span class="copy-button">Kopieren</span></span>: Geben Sie den Namen des Sim ein, den Sie zurücksetzen möchten (ohne Klammern). Hängt Ihr Sim im Spiel fest, wird er mit diesem Cheat wieder spielbar.</li>
-                    <li><span class="cheat-command">fullscreen<span class="copy-button">Kopieren</span></span>: Vollbildmodus an/aus.</li>
-                    <li><span class="cheat-command">headlineEffects on<span class="copy-button">Kopieren</span></span>: Sprech- und Gedankenblasen und Plumbob (Diamant, der über ausgewähltem Sim schwebt) aktivieren.</li>
-                    <li><span class="cheat-command">headlineEffects off<span class="copy-button">Kopieren</span></span>: Sprech- und Gedankenblasen und Plumbob (Diamant, der über ausgewähltem Sim schwebt) deaktivieren.</li>
-                    <li><span class="cheat-command">hovereffects on<span class="copy-button">Kopieren</span></span>: Weiße Umrandungen, wenn Sie mit dem Cursor auf ein Objekt fahren, werden angezeigt.</li>
-                    <li><span class="cheat-command">hovereffects off<span class="copy-button">Kopieren</span></span>: Weiße Umrandungen, wenn Sie mit dem Cursor auf ein Objekt fahren, werden nicht angezeigt.</li>
-                    <li><span class="cheat-command">objects.consumables_infinite_toggle<span class="copy-button">Kopieren</span></span>: Verbrauchbare Objekte gehen nie aus.</li>
-                    <li><span class="cheat-command">ui.toggle_silence_phone<span class="copy-button">Kopieren</span></span>: Schalten Sie das Handy Ihres Sims auf lautlos bzw. laut.</li>
-                    <li><span class="cheat-command">object.setashead<span class="copy-button">Kopieren</span></span>: Legen Sie ein Objekt als Kopf fest. Geben Sie vor dem eigentlichen Cheat zuerst „testingcheats true“ in die Cheatkonsole ein. Klicken Sie dann mit Shift + Linke Maustaste auf einen Gegenstand und wählen Sie die Option „als Kopf festlegen“.</li>
-                </ul>
-            </div>
-        </div>
-        <p>&nbsp;</p>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-7">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-simoleons,-rechnungen-und-immobilien">Sims 4: Cheats für Simoleons, Rechnungen und Immobilien</h2>
-            <div class="Article__Text mt-sm">
-                <p>Möchten Sie Ihren Sims finanziell etwas unter die Arme greifen, können Sie mit folgenden Cheats schnell Geld verdienen. Um die Cheats anzuwenden, geben Sie vorher <strong>„testingcheats true“ in die Cheat-Konsole</strong> ein, um sicherzustellen, dass die Befehle auch wirklich angewendet werden:</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">kaching<span class="copy-button">Kopieren</span></span> oder <span class="cheat-command">rosebud<span class="copy-button">Kopieren</span></span>: Sie erhalten 1.000 Simoleons.</li>
-                    <li><span class="cheat-command">motherlode<span class="copy-button">Kopieren</span></span>: Sie erhalten 50.000 Simoleons.</li>
-                    <li><span class="cheat-command">money X<span class="copy-button">Kopieren</span></span>: Ersetzen Sie das „X“ um einen beliebigen Geldbetrag, um die Höhe Ihres Haushaltsvermögens auf diesen Betrag anzupassen.</li>
-                    <li><span class="cheat-command">sims.modify_funds X<span class="copy-button">Kopieren</span></span>: Ersetzen Sie das „X“ um einen beliebigen Geldbetrag, der Ihnen anschließend gutgeschrieben bzw. abgezogen wird.</li>
-                    <li><span class="cheat-command">household.autopay_bills true<span class="copy-button">Kopieren</span></span>: Ihr Haushalt erhält Rechnungen.</li>
-                    <li><span class="cheat-command">household.autopay_bills false<span class="copy-button">Kopieren</span></span>: Ihr Haushalt erhält keine Rechnungen.</li>
-                    <li><span class="cheat-command">FreeRealEstate on<span class="copy-button">Kopieren</span></span>: Sie können alle Wohngrundstücke in Ihrer Stadt kostenlos erwerben. Gehen Sie in die Stadtansicht und geben Sie den Cheat in die Cheat-Konsole ein.</li>
-                    <li><span class="cheat-command">FreeRealEstate off<span class="copy-button">Kopieren</span></span>: Setzen Sie die kostenlosen Wohngrundstücke wieder auf ihre ursprünglichen Preise zurück.</li>
-                </ul>
-            </div>
-        </div>
-        <p>&nbsp;</p>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-8">
-            <h2 class="hl-md mt-md" id="sims-4:-bedürfnisse-mit-cheats-auffüllen">Sims 4: Bedürfnisse mit Cheats auffüllen</h2>
-            <div class="Article__Text mt-sm">
-                <p>Möchten Sie einen bestimmten Bedürfniswert Ihrer Sims füllen, geben Sie zuvor „testingcheats true“ in die Cheat-Konsole ein. Nutzen Sie anschließend den Cheat für das entsprechende Bedürfnis:</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">sims.fill_all_commodities<span class="copy-button">Kopieren</span></span>: Füllen Sie alle Bedürfnis-Balken Ihres Sims auf einmal auf.</li>
-                    <li><span class="cheat-command">fillmotive motive_Energy<span class="copy-button">Kopieren</span></span>: Energie</li>
-                    <li><span class="cheat-command">fillmotive motive_Hunger<span class="copy-button">Kopieren</span></span>: Hunger</li>
-                    <li><span class="cheat-command">fillmotive motive_Bladder<span class="copy-button">Kopieren</span></span>: Blase</li>
-                    <li><span class="cheat-command">fillmotive motive_Hygiene<span class="copy-button">Kopieren</span></span>: Hygiene</li>
-                    <li><span class="cheat-command">fillmotive motive_Social<span class="copy-button">Kopieren</span></span>: Sozial</li>
-                    <li><span class="cheat-command">fillmotive motive_Fun<span class="copy-button">Kopieren</span></span>: Spaß</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-9">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-beziehungen-zwischen-sims">Sims 4: Cheats für Beziehungen zwischen Sims</h2>
-            <div class="Article__Text mt-sm">
-                <p>Geben Sie in die Cheat-Konsole zuerst den Befehl „testingcheats true“ ein, um anschließend Beziehungs-Cheats anwenden zu können.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">relationships.Create_Friends_For_Sim<span class="copy-button">Kopieren</span></span>: Im Spiel taucht ein neuer Sim auf, der dann ein Freund Ihres ausgewählten Sim wird.</li>
-                    <li><span class="cheat-command">relationship.introduce_sim_to_all_others<span class="copy-button">Kopieren</span></span>: Ihr ausgewählter Sim kennt alle Sims in allen Spielwelten als Bekannte.</li>
-                    <li><span class="cheat-command">Modifyrelationship [Vorname Nachname erster Sim] [Vorname Nachname zweiter Sim] 100 Friendship_Main<span class="copy-button">Kopieren</span></span>: Fördern Sie das Freundschaftslevel zweier Sims. Geben Sie dazu die vollständigen Namen Ihres Sim und des Sim, mit dem Ihr Sim befreundet sein soll, ein (ohne Klammern).</li>
-                    <li><span class="cheat-command">Modifyrelationship [Vorname Nachname erster Sim] [Vorname Nachname zweiter Sim] 100 Romance_Main<span class="copy-button">Kopieren</span></span>: Erschaffen Sie eine romantische Beziehung zwischen zwei Sims. Geben Sie dazu die vollständigen Namen der entsprechenden Sims ein (ohne Klammern).</li>
-                    <li><span class="cheat-command">Modifyrelationship [Vorname Nachname erster Sim] [Vorname Nachname zweiter Sim] -100 Friendship_Main<span class="copy-button">Kopieren</span></span>: Führen Sie eine Feindschaft zwischen zwei Sims herbei. Geben Sie die vollständigen Namen zweier Sims ein (ohne Klammern).</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-10">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-beziehungen-zwischen-sim-und-tier">Sims 4: Cheats für Beziehungen zwischen Sim und Tier</h2>
-            <div class="Article__Text mt-sm">
-                <p>Schalten Sie die Beziehungs-Cheats zwischen Sim und Tier mit dem Cheat „testingcheats true“ frei. Erst danach können Sie die untenstehenden Cheats nutzen.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">modifyrelationship [Vorname Nachname Sim] [Vorname Nachname Tier] 100 LTR_SimToPet_Friendship_Main<span class="copy-button">Kopieren</span></span>: Setzen Sie den Freundschaftsgrad zwischen Ihrem ausgewählten Sim und einem Haustier auf das Maximum. Geben Sie die Namen für Sim und Tier ein (ohne Klammern).</li>
-                    <li><span class="cheat-command">modifyrelationship [Vorname Nachname Sim] [Vorname Nachname Tier] -100 LTR_SimToPet_Friendship_Main<span class="copy-button">Kopieren</span></span>: Setzen Sie den Freundschaftsgrad zwischen Ihrem Sim und einem Tier auf das Minimum herunter.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-11">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-den-kauf-/baumodus">Sims 4: Cheats für den Kauf-/Baumodus</h2>
-            <div class="Article__Text mt-sm">
-                <p>Möchten Sie die Wohnung Ihrer Sims oder die Simswelt bearbeiten, können Sie dabei ebenfalls auf Cheats zurückgreifen. Mit diesen lassen sich Objekte und Grundstücke über den Kauf- und Baumodus freier gestalten. Auch hier sollten Sie vorher sicherheitshalber "testingcheats true" in die Konsole eingeben:</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">bb.enablefreebuild<span class="copy-button">Kopieren</span></span>: Kauf-/Baumodus auf versteckten Grundstücken nutzen.</li>
-                    <li><span class="cheat-command">bb.moveobjects<span class="copy-button">Kopieren</span></span>: Objekte und Mobiliar frei platzieren. Auf der Tastatur können Sie die Objekte mit „9“ und „0“ in der Höhe anpassen.</li>
-                    <li><span class="cheat-command">bb.showhiddenobjects<span class="copy-button">Kopieren</span></span>: Unsichtbare Objekte im Kaufmodus verfügbar machen. Mithilfe des Befehls "<i>##DEBUG##</i>" können Sie anschließend innerhalb Ihrer Objekte gezielt nach den nun hinzugeschalteten Debug-Objekten suchen und sortieren. Diese sind meistens umsonst oder für kleines Geld verfügbar; allerdings kann nicht mit allen Objekten wie gewohnt interagiert werden.</li>
-                    <li><span class="cheat-command">bb.ignoregameplayunlocksentitlement<span class="copy-button">Kopieren</span></span>: Schalten Sie alle Karriere-Belohnungsobjekte für den Kaufmodus frei.</li>
-                    <li><span class="cheat-command">bb.showliveeditobjects<span class="copy-button">Kopieren</span></span>: Schalten Sie im Kaufmodus Dekogegenstände frei, die aus den Teilen der Simsstadt stammen, die Sie nicht bearbeiten können.</li>
-                    <li><span class="cheat-command">[Strg] + [']<span class="copy-button">Kopieren</span></span>: Drücken Sie die beiden Tasten gleichzeitig, um ein Objekt zu vergrößern.</li>
-                    <li><span class="cheat-command">[Strg] + [?]<span class="copy-button">Kopieren</span></span>: Drücken Sie die Tasten gleichzeitig, um ein Objekt zu verkleinern.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-12">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-aktivitäten-und-belohnungspunkte">Sims 4: Cheats für Aktivitäten und Belohnungspunkte</h2>
-            <div class="Article__Text mt-sm">
-                <p>Bevor Sie die untenstehenden Cheats nutzen können, geben Sie „testingcheats true“ &nbsp;in die Cheat-Konsole ein.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">aspirations.complete_current_milestone<span class="copy-button">Kopieren</span></span>: Ihr Sim erreicht bei seinem aktuellen Bestreben den nächsten Meilenstein.</li>
-                    <li><span class="cheat-command">sims.give_satisfaction_points X<span class="copy-button">Kopieren</span></span>: Legen Sie fest, über wie viele Belohnungspunkte Ihr Sim verfügen soll. Ersetzen Sie „X“ durch die gewünschte Menge der Belohnungspunkte.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-12">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-karriere-und-schule">Sims 4: Cheats für Karriere und Schule</h2>
-            <div class="Article__Text mt-sm">
-                <p>Schalten Sie „testingcheats true“ &nbsp;ein, um Karriere-Cheats nutzen zu können. Geben Sie bei [Name] die jeweilige englische Berufsbezeichnung ein (ohne Klammern). Eine Liste mit allen Karrierenamen finden Sie im Internet. Beispiele: Painter für Maler/in, Athletic für Sportler/in oder Culinary für Leckermaul.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">Careers.promote [Karriere]<span class="copy-button">Kopieren</span></span>: Sim wird befördert.</li>
-                    <li><span class="cheat-command">Careers.demote [Karriere]<span class="copy-button">Kopieren</span></span>: Ausgewählter Sim wird in seiner Karriere eine Stufe herabgesetzt.</li>
-                    <li><span class="cheat-command">Careers.add_career [Karriere]<span class="copy-button">Kopieren</span></span>: Geben Sie die Karriere an, in der Ihr Sim tätig werden soll.</li>
-                    <li><span class="cheat-command">Careers.remove_career [Karriere]<span class="copy-button">Kopieren</span></span>: Ihr Sim wird aus seiner Karriere entlassen.</li>
-                    <li><span class="cheat-command">Careers.promote Gradeschool<span class="copy-button">Kopieren</span></span>: Die Schulnote des ausgewählten Sim-Kindes verbessert sich um eine Note.</li>
-                    <li><span class="cheat-command">Careers.promote Highschool<span class="copy-button">Kopieren</span></span>: Die Schulnote des Sim-Teenagers verbessert sich um eine Note.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-direction-column-mu fb-order-12">
-            <h2 class="hl-md mt-md" id="sims-4:-fähigkeiten-cheats-für-erwachsene">Sims 4: Fähigkeiten-Cheats für Erwachsene</h2>
-            <div class="Article__Text mt-sm">
-                <p>Statt lange für bestimmte Fähigkeiten zu üben, können Sie Ihren Sims auch mit Cheats bestimmte Fähigkeiten aneignen. Aktivieren Sie für die Fähigkeits-Cheats zuvor „testingcheats true“ in der Cheat-Konsole. Mit diesen Cheats erreichen Ihre Sims sofort das jeweils höchste Fähigkeitslevel:</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">stats.set_skill_level major_fishing 10<span class="copy-button">Kopieren</span></span>: Angeln</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_charisma 10<span class="copy-button">Kopieren</span></span>: Charisma</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_comedy 10<span class="copy-button">Kopieren</span></span>: Comedy</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_homestylecooking 10<span class="copy-button">Kopieren</span></span>: Kochen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_gourmetcooking 10<span class="copy-button">Kopieren</span></span>: Feinschmecker-Kochen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_bartending 10<span class="copy-button">Kopieren</span></span>: Mixen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_gardening 10<span class="copy-button">Kopieren</span></span>: Gartenarbeit</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_fitness 10<span class="copy-button">Kopieren</span></span>: Fitness</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_violin 10<span class="copy-button">Kopieren</span></span>: Geige spielen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_guitar 10<span class="copy-button">Kopieren</span></span>: Gitarre spielen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_piano 10<span class="copy-button">Kopieren</span></span>: Klavier spielen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_painting 10<span class="copy-button">Kopieren</span></span>: Malen</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_writing 10<span class="copy-button">Kopieren</span></span>: Schreiben</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_handiness 10<span class="copy-button">Kopieren</span></span>: Geschicklichkeit</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_logic 10<span class="copy-button">Kopieren</span></span>: Logik</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_programming 10<span class="copy-button">Kopieren</span></span>: Programmieren</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_videogaming 10<span class="copy-button">Kopieren</span></span>: Videospiele</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_rocketscience 10<span class="copy-button">Kopieren</span></span>: Raumfahrttechnik</li>
-                    <li><span class="cheat-command">stats.set_skill_level major_mischief 10<span class="copy-button">Kopieren</span></span>: Schelm</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-12">
-            <h2 class="hl-md mt-md" id="sims-4:-fähigkeiten-cheats-für-kinder">Sims 4: Fähigkeiten-Cheats für Kinder</h2>
-            <div class="Article__Text mt-sm">
-                <p>In Sims 4 können auch Kinder bereits Fähigkeiten erwerben. Um die Fähigkeits-Cheats für Kinder nutzen zu können, schalten Sie zuvor über die Cheat-Konsole „testingcheats true“ ein.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">stats.set_skill_level skill_child_social 10<span class="copy-button">Kopieren</span></span>: Sozial</li>
-                    <li><span class="cheat-command">stats.set_skill_level skill_child_creativity 10<span class="copy-button">Kopieren</span></span>: Kreativität</li>
-                    <li><span class="cheat-command">stats.set_skill_level skill_child_mental 10<span class="copy-button">Kopieren</span></span>: Mental</li>
-                    <li><span class="cheat-command">stats.set_skill_level skill_child_motor 10<span class="copy-button">Kopieren</span></span>: Motorik</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-12">
-            <h2 class="hl-md mt-md" id="sims-4:-fähigkeiten-cheats-für-kleinkinder">Sims 4: Fähigkeiten-Cheats für Kleinkinder</h2>
-            <div class="Article__Text mt-sm">
-                <p>Für die nachfolgenden Cheats müssen Sie ebenfalls die erweiterten Cheats aktivieren. Geben Sie dazu „testingcheats true“ &nbsp;in die Cheat-Konsole ein.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">stats.set_skill_level toddler_potty 3<span class="copy-button">Kopieren</span></span>: Aufs Töpfchen gehen</li>
-                    <li><span class="cheat-command">stats.set_skill_level toddler_movement 5<span class="copy-button">Kopieren</span></span>: Motorik</li>
-                    <li><span class="cheat-command">stats.set_skill_level toddler_imagination 5<span class="copy-button">Kopieren</span></span>: Fantasie</li>
-                    <li><span class="cheat-command">stats.set_skill_level toddler_thinking 5<span class="copy-button">Kopieren</span></span>: Denken</li>
-                    <li><span class="cheat-command">stats.set_skill_level toddler_communication 5<span class="copy-button">Kopieren</span></span>: Kommunikation</li>
-                </ul>
-            </div>
-        </div>
-        <div class="Article__Chapter fb-col-md-10 fb-col-lg-10 fb-order-12">
-            <h2 class="hl-md mt-md" id="sims-4:-cheats-für-tod-und-todesursachen">Sims 4: Cheats für Tod und Todesursachen</h2>
-            <div class="Article__Text mt-sm">
-                <p>Mit den nachfolgenden Cheats können Sie die Todesursache für einen ausgewählten Sim festlegen und ein vorzeitiges Ableben herbeiführen. Anschließend wird dieser Sim zum Geist. Haben Sie es sich anders überlegt und Sie wollen einen Geister-Sim wieder ins Reich der Lebenden zurückholen, geben Sie den Cheat für die Todesursache des jeweiligen Sim ein – tauschen Sie dabei „equip“ durch „remove“ aus.</p>
-            </div>
-            <div class="mt-sm">
-                <ul class="List List--Unordered bullet">
-                    <li><span class="cheat-command">Death.toggle true<span class="copy-button">Kopieren</span></span>: Aktivieren Sie den Tod für den ausgewählten Sim.</li>
-                    <li><span class="cheat-command">Death.toggle false<span class="copy-button">Kopieren</span></span>: Deaktvieren Sie den Tod für den aktiven Sim.</li>
-                    <li><span class="cheat-command">traits.equip_trait oldage<span class="copy-button">Kopieren</span></span>: Bei ausgewähltem Senioren-Sim Tod durch Altersschwäche auslösen.</li>
-                    <li><span class="cheat-command">traits.equip_trait exhaust<span class="copy-button">Kopieren</span></span>: Senioren-Sim stirbt wegen Überanstrengung.</li>
-                    <li><span class="cheat-command">traits.equip_trait embarrassment<span class="copy-button">Kopieren</span></span>: Tod durch Blamage auslösen.</li>
-                    <li><span class="cheat-command">traits.equip_trait drown<span class="copy-button">Kopieren</span></span>: Sim ertrinkt.</li>
-                    <li><span class="cheat-command">traits.equip_trait fire<span class="copy-button">Kopieren</span></span>: Feuertod auslösen.</li>
-                    <li><span class="cheat-command">traits.equip_trait hunger<span class="copy-button">Kopieren</span></span>: Sim verhungert.</li>
-                    <li><span class="cheat-command">traits.equip_trait cowplant<span class="copy-button">Kopieren</span></span>: Sim wird von Kuhpflanze gefressen und stirbt.</li>
-                    <li><span class="cheat-command">traits.equip_trait laugh<span class="copy-button">Kopieren</span></span>: Sim stirbt an Lachanfall.</li>
-                    <li><span class="cheat-command">traits.equip_trait electrocution<span class="copy-button">Kopieren</span></span>: Tod durch Stromschlag.</li>
-                    <li><span class="cheat-command">traits.equip_trait anger<span class="copy-button">Kopieren</span></span>: Sim stirbt an Wut.</li>
-                </ul>
-            </div>
-        </div>
+
+    <!-- Allgemeine Cheats -->
+    <div>
+        <h2 id="sims-4:-allgemeine-cheats">Sims 4: Allgemeine Cheats</h2>
+        <p>Mit den nachfolgenden Cheats können Sie Ihr Spielerlebnis in Sims 4 anpassen. Öffnen Sie wie oben beschrieben die Cheat-Konsole und fügen dann die folgenden Befehle ein:</p>
+        <ul>
+            <li><span class="cheat-command">help<span class="copy-button">Kopieren</span></span>: Liste mit Cheats wird in der Cheatkonsole angezeigt.</li>
+            <li><span class="cheat-command">resetSim [Vorname] [Nachname]<span class="copy-button">Kopieren</span></span>: Geben Sie den Namen des Sim ein, den Sie zurücksetzen möchten (ohne Klammern). Hängt Ihr Sim im Spiel fest, wird er mit diesem Cheat wieder spielbar.</li>
+            <li><span class="cheat-command">fullscreen<span class="copy-button">Kopieren</span></span>: Vollbildmodus an/aus.</li>
+            <li><span class="cheat-command">headlineEffects on<span class="copy-button">Kopieren</span></span>: Sprech- und Gedankenblasen und Plumbob (Diamant, der über ausgewähltem Sim schwebt) aktivieren.</li>
+            <li><span class="cheat-command">headlineEffects off<span class="copy-button">Kopieren</span></span>: Sprech- und Gedankenblasen und Plumbob (Diamant, der über ausgewähltem Sim schwebt) deaktivieren.</li>
+            <li><span class="cheat-command">hovereffects on<span class="copy-button">Kopieren</span></span>: Weiße Umrandungen, wenn Sie mit dem Cursor auf ein Objekt fahren, werden angezeigt.</li>
+            <li><span class="cheat-command">hovereffects off<span class="copy-button">Kopieren</span></span>: Weiße Umrandungen, wenn Sie mit dem Cursor auf ein Objekt fahren, werden nicht angezeigt.</li>
+            <li><span class="cheat-command">objects.consumables_infinite_toggle<span class="copy-button">Kopieren</span></span>: Verbrauchbare Objekte gehen nie aus.</li>
+            <li><span class="cheat-command">ui.toggle_silence_phone<span class="copy-button">Kopieren</span></span>: Schalten Sie das Handy Ihres Sims auf lautlos bzw. laut.</li>
+            <li><span class="cheat-command">object.setashead<span class="copy-button">Kopieren</span></span>: Legen Sie ein Objekt als Kopf fest. Geben Sie vor dem eigentlichen Cheat zuerst „testingcheats true“ in die Cheatkonsole ein. Klicken Sie dann mit Shift + Linke Maustaste auf einen Gegenstand und wählen Sie die Option „als Kopf festlegen“.</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für Simoleons, Rechnungen und Immobilien -->
+    <div>
+        <h2 id="sims-4:-cheats-für-simoleons,-rechnungen-und-immobilien">Sims 4: Cheats für Simoleons, Rechnungen und Immobilien</h2>
+        <p>Möchten Sie Ihren Sims finanziell etwas unter die Arme greifen, können Sie mit folgenden Cheats schnell Geld verdienen. Um die Cheats anzuwenden, geben Sie vorher <strong>„testingcheats true“ in die Cheat-Konsole</strong> ein, um sicherzustellen, dass die Befehle auch wirklich angewendet werden:</p>
+        <ul>
+            <li><span class="cheat-command">kaching<span class="copy-button">Kopieren</span></span> oder <span class="cheat-command">rosebud<span class="copy-button">Kopieren</span></span>: Sie erhalten 1.000 Simoleons.</li>
+            <li><span class="cheat-command">motherlode<span class="copy-button">Kopieren</span></span>: Sie erhalten 50.000 Simoleons.</li>
+            <li><span class="cheat-command">money X<span class="copy-button">Kopieren</span></span>: Ersetzen Sie das „X“ um einen beliebigen Geldbetrag, um die Höhe Ihres Haushaltsvermögens auf diesen Betrag anzupassen.</li>
+            <li><span class="cheat-command">sims.modify_funds +/- X<span class="copy-button">Kopieren</span></span>: Ersetzen Sie das „X“ um einen beliebigen Geldbetrag, der Ihnen anschließend gutgeschrieben bzw. abgezogen wird.</li>
+            <li><span class="cheat-command">household.autopay_bills true<span class="copy-button">Kopieren</span></span>: Ihr Haushalt erhält Rechnungen.</li>
+            <li><span class="cheat-command">household.autopay_bills false<span class="copy-button">Kopieren</span></span>: Ihr Haushalt erhält keine Rechnungen.</li>
+            <li><span class="cheat-command">FreeRealEstate on<span class="copy-button">Kopieren</span></span>: Sie können alle Wohngrundstücke in Ihrer Stadt kostenlos erwerben. Gehen Sie in die Stadtansicht und geben Sie den Cheat in die Cheat-Konsole ein.</li>
+            <li><span class="cheat-command">FreeRealEstate off<span class="copy-button">Kopieren</span></span>: Setzen Sie die kostenlosen Wohngrundstücke wieder auf ihre ursprünglichen Preise zurück.</li>
+        </ul>
+    </div>
+
+    <!-- Bedürfnisse mit Cheats auffüllen -->
+    <div>
+        <h2 id="sims-4:-bedürfnisse-mit-cheats-auffüllen">Sims 4: Bedürfnisse mit Cheats auffüllen</h2>
+        <p>Möchten Sie einen bestimmten Bedürfniswert Ihrer Sims füllen, geben Sie zuvor „testingcheats true“ in die Cheat-Konsole ein. Nutzen Sie anschließend den Cheat für das entsprechende Bedürfnis:</p>
+        <ul>
+            <li><span class="cheat-command">sims.fill_all_commodities<span class="copy-button">Kopieren</span></span>: Füllen Sie alle Bedürfnis-Balken Ihres Sims auf einmal auf.</li>
+            <li><span class="cheat-command">fillmotive motive_Energy<span class="copy-button">Kopieren</span></span>: Energie</li>
+            <li><span class="cheat-command">fillmotive motive_Hunger<span class="copy-button">Kopieren</span></span>: Hunger</li>
+            <li><span class="cheat-command">fillmotive motive_Bladder<span class="copy-button">Kopieren</span></span>: Blase</li>
+            <li><span class="cheat-command">fillmotive motive_Hygiene<span class="copy-button">Kopieren</span></span>: Hygiene</li>
+            <li><span class="cheat-command">fillmotive motive_Social<span class="copy-button">Kopieren</span></span>: Sozial</li>
+            <li><span class="cheat-command">fillmotive motive_Fun<span class="copy-button">Kopieren</span></span>: Spaß</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für Beziehungen zwischen Sims -->
+    <div>
+        <h2 id="sims-4:-cheats-für-beziehungen-zwischen-sims">Sims 4: Cheats für Beziehungen zwischen Sims</h2>
+        <p>Geben Sie in die Cheat-Konsole zuerst den Befehl „testingcheats true“ ein, um anschließend Beziehungs-Cheats anwenden zu können.</p>
+        <ul>
+            <li><span class="cheat-command">relationships.Create_Friends_For_Sim<span class="copy-button">Kopieren</span></span>: Im Spiel taucht ein neuer Sim auf, der dann ein Freund Ihres ausgewählten Sim wird.</li>
+            <li><span class="cheat-command">relationship.introduce_sim_to_all_others<span class="copy-button">Kopieren</span></span>: Ihr ausgewählter Sim kennt alle Sims in allen Spielwelten als Bekannte.</li>
+            <li><span class="cheat-command">Modifyrelationship [Vorname Nachname erster Sim] [Vorname Nachname zweiter Sim] 100 Friendship_Main<span class="copy-button">Kopieren</span></span>: Fördern Sie das Freundschaftslevel zweier Sims. Geben Sie dazu die vollständigen Namen Ihres Sim und des Sim, mit dem Ihr Sim befreundet sein soll, ein (ohne Klammern).</li>
+            <li><span class="cheat-command">Modifyrelationship [Vorname Nachname erster Sim] [Vorname Nachname zweiter Sim] 100 Romance_Main<span class="copy-button">Kopieren</span></span>: Erschaffen Sie eine romantische Beziehung zwischen zwei Sims. Geben Sie dazu die vollständigen Namen der entsprechenden Sims ein (ohne Klammern).</li>
+            <li><span class="cheat-command">Modifyrelationship [Vorname Nachname erster Sim] [Vorname Nachname zweiter Sim] -100 Friendship_Main<span class="copy-button">Kopieren</span></span>: Führen Sie eine Feindschaft zwischen zwei Sims herbei. Geben Sie die vollständigen Namen zweier Sims ein (ohne Klammern).</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für Beziehungen zwischen Sim und Tier -->
+    <div>
+        <h2 id="sims-4:-cheats-für-beziehungen-zwischen-sim-und-tier">Sims 4: Cheats für Beziehungen zwischen Sim und Tier</h2>
+        <p>Schalten Sie die Beziehungs-Cheats zwischen Sim und Tier mit dem Cheat „testingcheats true“ frei. Erst danach können Sie die untenstehenden Cheats nutzen.</p>
+        <ul>
+            <li><span class="cheat-command">modifyrelationship [Vorname Nachname Sim] [Vorname Nachname Tier] 100 LTR_SimToPet_Friendship_Main<span class="copy-button">Kopieren</span></span>: Setzen Sie den Freundschaftsgrad zwischen Ihrem ausgewählten Sim und einem Haustier auf das Maximum. Geben Sie die Namen für Sim und Tier ein (ohne Klammern).</li>
+            <li><span class="cheat-command">modifyrelationship [Vorname Nachname Sim] [Vorname Nachname Tier] -100 LTR_SimToPet_Friendship_Main<span class="copy-button">Kopieren</span></span>: Setzen Sie den Freundschaftsgrad zwischen Ihrem Sim und einem Tier auf das Minimum herunter.</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für den Kauf-/Baumodus -->
+    <div>
+        <h2 id="sims-4:-cheats-für-den-kauf-/baumodus">Sims 4: Cheats für den Kauf-/Baumodus</h2>
+        <p>Möchten Sie die Wohnung Ihrer Sims oder die Simswelt bearbeiten, können Sie dabei ebenfalls auf Cheats zurückgreifen. Mit diesen lassen sich Objekte und Grundstücke über den Kauf- und Baumodus freier gestalten. Auch hier sollten Sie vorher sicherheitshalber "testingcheats true" in die Konsole eingeben:</p>
+        <ul>
+            <li><span class="cheat-command">bb.enablefreebuild<span class="copy-button">Kopieren</span></span>: Kauf-/Baumodus auf versteckten Grundstücken nutzen.</li>
+            <li><span class="cheat-command">bb.moveobjects<span class="copy-button">Kopieren</span></span>: Objekte und Mobiliar frei platzieren. Auf der Tastatur können Sie die Objekte mit „9“ und „0“ in der Höhe anpassen.</li>
+            <li><span class="cheat-command">bb.showhiddenobjects<span class="copy-button">Kopieren</span></span>: Unsichtbare Objekte im Kaufmodus verfügbar machen. Mithilfe des Befehls "<i>##DEBUG##</i>" können Sie anschließend innerhalb Ihrer Objekte gezielt nach den nun hinzugeschalteten Debug-Objekten suchen und sortieren. Diese sind meistens umsonst oder für kleines Geld verfügbar; allerdings kann nicht mit allen Objekten wie gewohnt interagiert werden.</li>
+            <li><span class="cheat-command">bb.ignoregameplayunlocksentitlement<span class="copy-button">Kopieren</span></span>: Schalten Sie alle Karriere-Belohnungsobjekte für den Kaufmodus frei.</li>
+            <li><span class="cheat-command">bb.showliveeditobjects<span class="copy-button">Kopieren</span></span>: Schalten Sie im Kaufmodus Dekogegenstände frei, die aus den Teilen der Simsstadt stammen, die Sie nicht bearbeiten können.</li>
+            <li><span class="cheat-command">[Strg] + [']<span class="copy-button">Kopieren</span></span>: Drücken Sie die beiden Tasten gleichzeitig, um ein Objekt zu vergrößern.</li>
+            <li><span class="cheat-command">[Strg] + [?]<span class="copy-button">Kopieren</span></span>: Drücken Sie die Tasten gleichzeitig, um ein Objekt zu verkleinern.</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für Aktivitäten und Belohnungspunkte -->
+    <div>
+        <h2 id="sims-4:-cheats-für-aktivitäten-und-belohnungspunkte">Sims 4: Cheats für Aktivitäten und Belohnungspunkte</h2>
+        <p>Bevor Sie die untenstehenden Cheats nutzen können, geben Sie „testingcheats true“ &nbsp;in die Cheat-Konsole ein.</p>
+        <ul>
+            <li><span class="cheat-command">aspirations.complete_current_milestone<span class="copy-button">Kopieren</span></span>: Ihr Sim erreicht bei seinem aktuellen Bestreben den nächsten Meilenstein.</li>
+            <li><span class="cheat-command">sims.give_satisfaction_points X<span class="copy-button">Kopieren</span></span>: Legen Sie fest, über wie viele Belohnungspunkte Ihr Sim verfügen soll. Ersetzen Sie „X“ durch die gewünschte Menge der Belohnungspunkte.</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für Karriere und Schule -->
+    <div>
+        <h2 id="sims-4:-cheats-für-karriere-und-schule">Sims 4: Cheats für Karriere und Schule</h2>
+        <p>Schalten Sie „testingcheats true“ &nbsp;ein, um Karriere-Cheats nutzen zu können. Geben Sie bei [Name] die jeweilige englische Berufsbezeichnung ein (ohne Klammern). Eine Liste mit allen Karrierenamen finden Sie im Internet. Beispiele: Painter für Maler/in, Athletic für Sportler/in oder Culinary für Leckermaul.</p>
+        <ul>
+            <li><span class="cheat-command">Careers.promote [Karriere]<span class="copy-button">Kopieren</span></span>: Sim wird befördert.</li>
+            <li><span class="cheat-command">Careers.demote [Karriere]<span class="copy-button">Kopieren</span></span>: Ausgewählter Sim wird in seiner Karriere eine Stufe herabgesetzt.</li>
+            <li><span class="cheat-command">Careers.add_career [Karriere]<span class="copy-button">Kopieren</span></span>: Geben Sie die Karriere an, in der Ihr Sim tätig werden soll.</li>
+            <li><span class="cheat-command">Careers.remove_career [Karriere]<span class="copy-button">Kopieren</span></span>: Ihr Sim wird aus seiner Karriere entlassen.</li>
+            <li><span class="cheat-command">Careers.promote Gradeschool<span class="copy-button">Kopieren</span></span>: Die Schulnote des ausgewählten Sim-Kindes verbessert sich um eine Note.</li>
+            <li><span class="cheat-command">Careers.promote Highschool<span class="copy-button">Kopieren</span></span>: Die Schulnote des Sim-Teenagers verbessert sich um eine Note.</li>
+        </ul>
+    </div>
+
+    <!-- Fähigkeiten-Cheats für Erwachsene -->
+    <div>
+        <h2 id="sims-4:-fähigkeiten-cheats-für-erwachsene">Sims 4: Fähigkeiten-Cheats für Erwachsene</h2>
+        <p>Statt lange für bestimmte Fähigkeiten zu üben, können Sie Ihren Sims auch mit Cheats bestimmte Fähigkeiten aneignen. Aktivieren Sie für die Fähigkeits-Cheats zuvor „testingcheats true“ in der Cheat-Konsole. Mit diesen Cheats erreichen Ihre Sims sofort das jeweils höchste Fähigkeitslevel:</p>
+        <ul>
+            <li><span class="cheat-command">stats.set_skill_level major_fishing 10<span class="copy-button">Kopieren</span></span>: Angeln</li>
+            <li><span class="cheat-command">stats.set_skill_level major_charisma 10<span class="copy-button">Kopieren</span></span>: Charisma</li>
+            <li><span class="cheat-command">stats.set_skill_level major_comedy 10<span class="copy-button">Kopieren</span></span>: Comedy</li>
+            <li><span class="cheat-command">stats.set_skill_level major_homestylecooking 10<span class="copy-button">Kopieren</span></span>: Kochen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_gourmetcooking 10<span class="copy-button">Kopieren</span></span>: Feinschmecker-Kochen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_bartending 10<span class="copy-button">Kopieren</span></span>: Mixen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_gardening 10<span class="copy-button">Kopieren</span></span>: Gartenarbeit</li>
+            <li><span class="cheat-command">stats.set_skill_level major_fitness 10<span class="copy-button">Kopieren</span></span>: Fitness</li>
+            <li><span class="cheat-command">stats.set_skill_level major_violin 10<span class="copy-button">Kopieren</span></span>: Geige spielen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_guitar 10<span class="copy-button">Kopieren</span></span>: Gitarre spielen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_piano 10<span class="copy-button">Kopieren</span></span>: Klavier spielen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_painting 10<span class="copy-button">Kopieren</span></span>: Malen</li>
+            <li><span class="cheat-command">stats.set_skill_level major_writing 10<span class="copy-button">Kopieren</span></span>: Schreiben</li>
+            <li><span class="cheat-command">stats.set_skill_level major_handiness 10<span class="copy-button">Kopieren</span></span>: Geschicklichkeit</li>
+            <li><span class="cheat-command">stats.set_skill_level major_logic 10<span class="copy-button">Kopieren</span></span>: Logik</li>
+            <li><span class="cheat-command">stats.set_skill_level major_programming 10<span class="copy-button">Kopieren</span></span>: Programmieren</li>
+            <li><span class="cheat-command">stats.set_skill_level major_videogaming 10<span class="copy-button">Kopieren</span></span>: Videospiele</li>
+            <li><span class="cheat-command">stats.set_skill_level major_rocketscience 10<span class="copy-button">Kopieren</span></span>: Raumfahrttechnik</li>
+            <li><span class="cheat-command">stats.set_skill_level major_mischief 10<span class="copy-button">Kopieren</span></span>: Schelm</li>
+        </ul>
+    </div>
+
+    <!-- Fähigkeiten-Cheats für Kinder -->
+    <div>
+        <h2 id="sims-4:-fähigkeiten-cheats-für-kinder">Sims 4: Fähigkeiten-Cheats für Kinder</h2>
+        <p>In Sims 4 können auch Kinder bereits Fähigkeiten erwerben. Um die Fähigkeits-Cheats für Kinder nutzen zu können, schalten Sie zuvor über die Cheat-Konsole „testingcheats true“ ein.</p>
+        <ul>
+            <li><span class="cheat-command">stats.set_skill_level skill_child_social 10<span class="copy-button">Kopieren</span></span>: Sozial</li>
+            <li><span class="cheat-command">stats.set_skill_level skill_child_creativity 10<span class="copy-button">Kopieren</span></span>: Kreativität</li>
+            <li><span class="cheat-command">stats.set_skill_level skill_child_mental 10<span class="copy-button">Kopieren</span></span>: Mental</li>
+            <li><span class="cheat-command">stats.set_skill_level skill_child_motor 10<span class="copy-button">Kopieren</span></span>: Motorik</li>
+        </ul>
+    </div>
+
+    <!-- Fähigkeiten-Cheats für Kleinkinder -->
+    <div>
+        <h2 id="sims-4:-fähigkeiten-cheats-für-kleinkinder">Sims 4: Fähigkeiten-Cheats für Kleinkinder</h2>
+        <p>Für die nachfolgenden Cheats müssen Sie ebenfalls die erweiterten Cheats aktivieren. Geben Sie dazu „testingcheats true“ &nbsp;in die Cheat-Konsole ein.</p>
+        <ul>
+            <li><span class="cheat-command">stats.set_skill_level toddler_potty 3<span class="copy-button">Kopieren</span></span>: Aufs Töpfchen gehen</li>
+            <li><span class="cheat-command">stats.set_skill_level toddler_movement 5<span class="copy-button">Kopieren</span></span>: Motorik</li>
+            <li><span class="cheat-command">stats.set_skill_level toddler_imagination 5<span class="copy-button">Kopieren</span></span>: Fantasie</li>
+            <li><span class="cheat-command">stats.set_skill_level toddler_thinking 5<span class="copy-button">Kopieren</span></span>: Denken</li>
+            <li><span class="cheat-command">stats.set_skill_level toddler_communication 5<span class="copy-button">Kopieren</span></span>: Kommunikation</li>
+        </ul>
+    </div>
+
+    <!-- Cheats für Tod und Todesursachen -->
+    <div>
+        <h2 id="sims-4:-cheats-für-tod-und-todesursachen">Sims 4: Cheats für Tod und Todesursachen</h2>
+        <p>Mit den nachfolgenden Cheats können Sie die Todesursache für einen ausgewählten Sim festlegen und ein vorzeitiges Ableben herbeiführen. Anschließend wird dieser Sim zum Geist. Haben Sie es sich anders überlegt und Sie wollen einen Geister-Sim wieder ins Reich der Lebenden zurückholen, geben Sie den Cheat für die Todesursache des jeweiligen Sim ein – tauschen Sie dabei „equip“ durch „remove“ aus.</p>
+        <ul>
+            <li><span class="cheat-command">Death.toggle true<span class="copy-button">Kopieren</span></span>: Aktivieren Sie den Tod für den ausgewählten Sim.</li>
+            <li><span class="cheat-command">Death.toggle false<span class="copy-button">Kopieren</span></span>: Deaktvieren Sie den Tod für den aktiven Sim.</li>
+            <li><span class="cheat-command">traits.equip_trait oldage<span class="copy-button">Kopieren</span></span>: Bei ausgewähltem Senioren-Sim Tod durch Altersschwäche auslösen.</li>
+            <li><span class="cheat-command">traits.equip_trait exhaust<span class="copy-button">Kopieren</span></span>: Senioren-Sim stirbt wegen Überanstrengung.</li>
+            <li><span class="cheat-command">traits.equip_trait embarrassment<span class="copy-button">Kopieren</span></span>: Tod durch Blamage auslösen.</li>
+            <li><span class="cheat-command">traits.equip_trait drown<span class="copy-button">Kopieren</span></span>: Sim ertrinkt.</li>
+            <li><span class="cheat-command">traits.equip_trait fire<span class="copy-button">Kopieren</span></span>: Feuertod auslösen.</li>
+            <li><span class="cheat-command">traits.equip_trait hunger<span class="copy-button">Kopieren</span></span>: Sim verhungert.</li>
+            <li><span class="cheat-command">traits.equip_trait cowplant<span class="copy-button">Kopieren</span></span>: Sim wird von Kuhpflanze gefressen und stirbt.</li>
+            <li><span class="cheat-command">traits.equip_trait laugh<span class="copy-button">Kopieren</span></span>: Sim stirbt an Lachanfall.</li>
+            <li><span class="cheat-command">traits.equip_trait electrocution<span class="copy-button">Kopieren</span></span>: Tod durch Stromschlag.</li>
+            <li><span class="cheat-command">traits.equip_trait anger<span class="copy-button">Kopieren</span></span>: Sim stirbt an Wut.</li>
+        </ul>
     </div>
 
     <script>
@@ -462,6 +303,20 @@
                     }, 2000);
                 });
             });
+        });
+
+        // JavaScript zum Wechseln zwischen Desktop- und Mobile-Modus
+        const modeToggle = document.getElementById('mode-toggle');
+        const body = document.body;
+
+        modeToggle.addEventListener('click', () => {
+            if (body.classList.contains('mobile-mode')) {
+                body.classList.remove('mobile-mode');
+                modeToggle.textContent = 'Zu Mobile-Modus wechseln';
+            } else {
+                body.classList.add('mobile-mode');
+                modeToggle.textContent = 'Zu Desktop-Modus wechseln';
+            }
         });
     </script>
 </body>
